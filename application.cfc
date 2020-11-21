@@ -5,11 +5,20 @@ component
     this.sessionTimeout = CreateTimeSpan(1,0,0,0);
     this.scriptProtect = true;
 
+    /**
+     * Called when the application starts
+     * @returns {boolean} 
+     */
     public boolean function onApplicationStart()
     {
         return true;
     }
 
+    /**
+     * Called when the request starts
+     * @targetPage {string} Target Page
+     * @returns {boolean}
+     */
     public boolean function onRequestStart(required string targetPage)
     {
         this.jsLibraries = 
@@ -28,6 +37,10 @@ component
         return true;
     }
 
+    /**
+     * Called after onRequestStart Finishes
+     * @targetPage {string} Target Page
+     */
     public void function onRequest (required string targetPage)
     {
         if (! StructKeyExists(request, 'title') )
