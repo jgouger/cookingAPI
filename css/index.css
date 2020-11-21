@@ -1,0 +1,41 @@
+.receipe-card
+{
+    width: 312px; 
+    min-height: 323px; 
+    margin-bottom: 15px; 
+    padding-left: 0px !important; 
+    padding-right: 0px !important; 
+    margin-right: 15px !important;
+    cursor: pointer;
+}
+
+.receipe-image
+{
+    width: 312px; height: 231px;
+}
+
+.summary-text
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.details-image
+{
+    width: 556px; height: 370px; border: 1px solid #EEEEEE;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.card-group-layout
+{
+    padding-right: 0px; padding-left: 25px; padding-top: 25px;
+}
+
+.flex-nowrap-a
+{
+    flex-wrap: nowrap;
+}
