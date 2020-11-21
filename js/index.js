@@ -174,6 +174,8 @@ $(document).ready(function()
 
         receipeHTML += '</div>';
 
+        alert('hello world!');
+
         $(searchResults).append(receipeHTML);
 
         $(".receipe-card").click(function (e) 
