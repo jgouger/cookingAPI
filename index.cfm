@@ -1,5 +1,5 @@
 <cfscript>
-    request.pageTitle = 'Random Receipe Generator';
+    request.pageTitle = 'Random Recipe Generator';
     variables.mealTypes = request.controller.getMealTypes();
     variables.cuisines = request.controller.getCuisines();
     variables.diets = request.controller.getDiets();
@@ -8,7 +8,7 @@
 <cfoutput>
     <div class="card" id="search">
         <div class="card-header">
-            Search for a receipe
+            Search for a Recipe
            <span class="float-right glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
         </div>
         <div class="card-body">
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 
-                <buutton id="search-btn" class="btn btn-primary float-right">Get receipes</button>
+                <buutton id="search-btn" class="btn btn-primary float-right">Get recipes</button>
             </form>
         </div>
     </div>
@@ -74,7 +74,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header card-header">
-                    <h5 class="modal-title" id="receipe-title"></h5>
+                    <h5 class="modal-title" id="recipe-title"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -83,38 +83,38 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <img id="receipe-image" class="details-image mx-auto d-block" />
+                            <img id="recipe-image" class="details-image mx-auto d-block" />
                         </div>
                     </div>
                     
                     <div class="row">
-                        <div class="col-md-12 summary-text" id="receipe-summary"></div>
+                        <div class="col-md-12 summary-text" id="recipe-summary"></div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                            <span class="bold">Cuisine:</span> <span id="receipe-cuisine"></span> 
+                            <span class="bold">Cuisine:</span> <span id="recipe-cuisine"></span> 
                         </div>
                         <div class="col-md-6">
-                            <span class="bold">Meal Type:</span> <span id="receipe-dishTypes" ></span> 
+                            <span class="bold">Meal Type:</span> <span id="recipe-dishTypes" ></span> 
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                            <span class="bold">Diets:</span> <span id="receipe-diet" ></span> 
+                            <span class="bold">Diets:</span> <span id="recipe-diet" ></span> 
                         </div>
                         <div class="col-md-6">
-                            <span class="bold">Servings:</span> <span id="receipe-servings" ></span> 
+                            <span class="bold">Servings:</span> <span id="recipe-servings" ></span> 
                         </div>
                     </div>
 
                      <div class="row">
                         <div class="col-md-6">
-                            <span class="bold">Credit:</span> <span id="receipe-creditsText"></span> 
+                            <span class="bold">Credit:</span> <span id="recipe-creditsText"></span> 
                         </div>
                         <div class="col-md-6">
-                            <span class="bold">Source:</span> <span id="receipe-sourceName"><a id="receipe-sourceUrl"></a></span> 
+                            <span class="bold">Source:</span> <span id="recipe-sourceName"><a id="recipe-sourceUrl"></a></span> 
                         </div>
                     </div>
                     

@@ -58,10 +58,14 @@ component
     
     
     /**
-    * Searches the API for a receipe based on the given options
+    * Searches the API for a recipe based on the given options
+    * @query {string} Query to search for. 
+    * @type {string} Meal Type
+    * @cuisine {string} Cuisine
+    * @diet {string} Option diets
     * @returns {struct} JSON Object of results
     */
-    remote struct function search(required string query, required string type, required string cuisine, string diet default="") returnFormat="json"
+    remote struct function search(required string query, required string type, required string cuisine, string diet="") returnFormat="json"
     {
         var local = {};
         
@@ -71,29 +75,29 @@ component
 
         local.httpParams =
         {
-            url: 'https://api.spoonacular.com/recipes/complexSearch',
-            method: 'get',
-            apiKey: getApiKey(),
-            queryParams: local.searchParams
+            "url": 'https://api.spoonacular.com/recipes/complexSearch',
+            "method": 'get',
+            "apiKey": getApiKey(),
+            "queryParams": local.searchParams
         };
 
         return doHttp(httpParams);
     }
 
     /**
-    * Gets the detailed inforamtion of a receipe
-    * @returns {struct} JSON Object of receipe detail information
+    * Gets the detailed inforamtion of a recipe
+    * @recipeID {numeric} Recipe ID
+    * @returns {struct} JSON Object of recipe detail information
     */
-    remote struct function getDetails(required numeric receipeID) returnFormat="json"
+    remote struct function getDetails(required numeric recipeID) returnFormat="json"
     {
         var local = {};
-        local.success = false;
-
+        
         local.httpParams =
         {
-            url: 'https://api.spoonacular.com/recipes/#Arguments.receipeID#/information',
-            method: 'get',
-            apiKey: getApiKey()
+            "url": 'https://api.spoonacular.com/recipes/#Arguments.recipeID#/information',
+            "method": 'get',
+            "apiKey": getApiKey()
         }
 
         return doHttp(local.httpParams)

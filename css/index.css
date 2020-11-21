@@ -1,4 +1,4 @@
-.receipe-card
+.recipe-card
 {
     width: 312px; 
     min-height: 323px; 
@@ -9,7 +9,7 @@
     cursor: pointer;
 }
 
-.receipe-image
+.recipe-image
 {
     width: 312px; height: 231px;
 }

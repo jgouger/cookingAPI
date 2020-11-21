@@ -9,7 +9,7 @@ $(document).ready(function()
     var renderDetails = function (data)
     {
         // empty all content nodes
-        var dataNodes = ['receipe-title', 'receipe-image', 'receipe-summary', 'receipe-cuisine', 'receipe-dishTypes', 'receipe-servings', 'receipe-creditsText', 'receipe-sourceName', 'receipe-sourceUrl'];
+        var dataNodes = ['recipe-title', 'recipe-image', 'recipe-summary', 'recipe-cuisine', 'recipe-dishTypes', 'recipe-servings', 'recipe-creditsText', 'recipe-sourceName', 'recipe-sourceUrl'];
         var detailModal = $('#details-modal');
         var key = '';
 
@@ -17,17 +17,17 @@ $(document).ready(function()
 
         for (var d = 0; d < dataNodes.length; d++)
         {
-            if (! (dataNodes[d] === 'receipe-sourceUrl' || dataNodes[d] === 'receipe-sourceName') )
+            if (! (dataNodes[d] === 'recipe-sourceUrl' || dataNodes[d] === 'recipe-sourceName') )
             {
                 $('#' + dataNodes[d]).empty();
             }
             else
             {
-                if (dataNodes[d] === 'receipe-sourceUrl')
+                if (dataNodes[d] === 'recipe-sourceUrl')
                 {
                     $('#' + dataNodes[d]).prop('href', '');
                 }
-                else if (dataNodes[d] === 'receipe-sourceName')
+                else if (dataNodes[d] === 'recipe-sourceName')
                 {
                     $('#' + dataNodes[d]).find('a').html() ;
                 }
@@ -35,7 +35,7 @@ $(document).ready(function()
 
             key = dataNodes[d].split("-")[1];
 
-            if (dataNodes[d] === 'receipe-image')
+            if (dataNodes[d] === 'recipe-image')
             {
                 $('#' + dataNodes[d]).prop('src', '');
             }
@@ -44,15 +44,15 @@ $(document).ready(function()
             {
                 if (data.hasOwnProperty(k) && k === key)
                 {
-                    if (dataNodes[d] === 'receipe-image')
+                    if (dataNodes[d] === 'recipe-image')
                     {
                         $('#' + dataNodes[d]).prop('src', data[k]);
                     }
-                    else if (dataNodes[d] === 'receipe-sourceUrl')
+                    else if (dataNodes[d] === 'recipe-sourceUrl')
                     {
                         $('#' + dataNodes[d]).prop('href', data[k]);
                     }
-                    else if (dataNodes[d] === 'receipe-sourceName')
+                    else if (dataNodes[d] === 'recipe-sourceName')
                     {
                         $('#' + dataNodes[d]).find('a').html(data[k]) ;
                     }
@@ -77,7 +77,7 @@ $(document).ready(function()
     };
 
     /**
-     * Gets the Details of the receipe from the API Service.
+     * Gets the Details of the recipe from the API Service.
      * @param {object} jQuery event object 
      * * @returns {void}
      */
@@ -85,14 +85,14 @@ $(document).ready(function()
     {
         var currentTarget = $(e)[0].currentTarget;
 
-        var receipeId = parseInt($(currentTarget).data('receipe-id'));
+        var recipeId = parseInt($(currentTarget).data('recipe-id'));
 
         $.ajax({
             method: 'post',
             url: 'controller/spoonacular.cfc?method=getDetails',
             data: 
             {
-                receipeId: receipeId
+                recipeId: recipeId
             }
         }).done(function(data)
         {
@@ -113,22 +113,22 @@ $(document).ready(function()
     };
 
     /**
-     * Renders the receipes after a successful callback to the API
+     * Renders the recipes after a successful callback to the API
      * @param {object} data 
      * @returns {void}
      */
-    var renderReceipe = function(data)
+    var renderRecipe = function(data)
     {
         var searchResults = $('#search-results-body');
 
         $(searchResults).empty();
 
-        var receipeHTML = '<div class="card-group card-group-layout"><div class="row flex-nowrap-a">';
+        var recipeHTML = '<div class="card-group card-group-layout"><div class="row flex-nowrap-a">';
 
         for (var r = 0; r < data.results.length; r++)
         {
-            receipeHTML += '<div class="card col-md-4 receipe-card" data-receipe-id="' + data.results[r].id + '">' +
-                '<img class="card-img-top receipe-image" src="' + data.results[r].image + '" title="' + data.results[r].title + '"/>' +
+            recipeHTML += '<div class="card col-md-4 recipe-card" data-recipe-id="' + data.results[r].id + '">' +
+                '<img class="card-img-top recipe-image" src="' + data.results[r].image + '" title="' + data.results[r].title + '"/>' +
                 '<div class="card-body">' + 
                     '<h6 class="card-title">' + data.results[r].title + '</h6>' +
                 '</div>' +
@@ -136,22 +136,22 @@ $(document).ready(function()
 
             if (r > 0 && (r + 1) % 3 == 0)
             {
-                receipeHTML += '</div><div class="row flex-nowrap-a">';
+                recipeHTML += '</div><div class="row flex-nowrap-a">';
             }
             else if (r == data.results.length - 1)
             {
                 // create empty cards so the that layout looks corect
                 if (data.results.length % 3 == 2)
                 {
-                    receipeHTML += '<div class="card col-md-4 receipe-card">' +
-                        '<div class="card-img-top receipe-image" />' +
+                    recipeHTML += '<div class="card col-md-4 recipe-card">' +
+                        '<div class="card-img-top recipe-image" />' +
                         '<div class="card-body">' + 
                             '<h6 class="card-title"></h6>' +
                         '</div>' +
                     '</div>';
 
-                    receipeHTML += '<div class="card col-md-4 receipe-card">' +
-                        '<div class="card-img-top receipe-image" />' +
+                    recipeHTML += '<div class="card col-md-4 recipe-card">' +
+                        '<div class="card-img-top recipe-image" />' +
                         '<div class="card-body">' + 
                             '<h6 class="card-title"></h6>' +
                         '</div>' +
@@ -160,23 +160,23 @@ $(document).ready(function()
 
                 if (data.results.length % 3 == 1)
                 {
-                    receipeHTML += '<div class="card col-md-4 receipe-card">' +
-                        '<div class="card-img-top receipe-image" />' +
+                    recipeHTML += '<div class="card col-md-4 recipe-card">' +
+                        '<div class="card-img-top recipe-image" />' +
                         '<div class="card-body">' + 
                             '<h6 class="card-title"></h6>' +
                         '</div>' +
                     '</div>';
                 }
 
-                receipeHTML += '</div>';
+                recipeHTML += '</div>';
             }
         }
 
-        receipeHTML += '</div>';
+        recipeHTML += '</div>';
 
-        $(searchResults).append(receipeHTML);
+        $(searchResults).append(recipeHTML);
 
-        $(".receipe-card").click(function (e) 
+        $(".recipe-card").click(function (e) 
         {
             getDetails(e); 
         } );
@@ -201,7 +201,7 @@ $(document).ready(function()
             // API call was successful. Build the Cards
             if (responseData.success)
             {
-               renderReceipe(responseData.results);
+               renderRecipe(responseData.results);
             }
 
             else

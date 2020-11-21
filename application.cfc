@@ -45,7 +45,7 @@ component
     {
         if (! StructKeyExists(request, 'title') )
         {
-            request.title = 'Receipe API Project';
+            request.title = 'Recipe API Project';
         }
 
         request.controller = new controller.spoonacular();
